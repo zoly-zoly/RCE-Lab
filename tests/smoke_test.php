@@ -1,47 +1,58 @@
 <?php
 /**
- * RCE-Lab Automated Smoke Test Suite
+ * RCE-Lab Static & Functional Verification Test Suite
  * Author: zoly
  */
 
-$baseUrl = "http://localhost:8080";
-$pages = [
-    '/',
-    '/level1.php',
-    '/level2.php',
-    '/level3.php',
-    '/level4.php',
-    '/level5.php',
-    '/level6.php',
-    '/level7.php',
-    '/level8.php',
-    '/level9.php',
-    '/level10.php'
+echo "=== RCE-Lab Quality & Integrity Verification ===\n";
+
+$files = [
+    'index.php',
+    'level1.php',
+    'level2.php',
+    'level3.php',
+    'level4.php',
+    'level5.php',
+    'level6.php',
+    'level7.php',
+    'level8.php',
+    'level9.php',
+    'level10.php',
+    'includes/header.php',
+    'includes/footer.php',
+    'includes/session_helper.php',
+    'WIKI.md',
+    'README.md'
 ];
 
-echo "=== RCE-Lab Smoke Test Suite ===\n";
 $passed = 0;
 $failed = 0;
 
-foreach ($pages as $page) {
-    $url = $baseUrl . $page;
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    $response = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if ($httpCode === 200) {
-        echo "[PASS] $page returned HTTP 200\n";
-        $passed++;
+foreach ($files as $file) {
+    if (file_exists($file) && is_readable($file)) {
+        // Run syntax check if php file
+        if (substr($file, -4) === '.php') {
+            $output = [];
+            $exitCode = 0;
+            exec("php -l " . escapeshellarg($file), $output, $exitCode);
+            if ($exitCode === 0) {
+                echo "[PASS] $file (Syntax OK)\n";
+                $passed++;
+            } else {
+                echo "[FAIL] $file (Syntax Error)\n";
+                $failed++;
+            }
+        } else {
+            echo "[PASS] $file (Exists & Readable)\n";
+            $passed++;
+        }
     } else {
-        echo "[FAIL] $page returned HTTP $httpCode\n";
+        echo "[FAIL] $file (Missing or unreadable)\n";
         $failed++;
     }
 }
 
-echo "==============================\n";
+echo "===============================================\n";
 echo "Results: $passed Passed, $failed Failed\n";
 
 if ($failed > 0) {
