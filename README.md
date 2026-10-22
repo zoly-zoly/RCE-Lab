@@ -54,11 +54,11 @@ The **RCE Masterclass Lab Suite** is meticulously engineered by **zoly** to brid
 ### Running the Lab Server
 1. Clone or navigate to the lab directory:
    ```bash
-   cd RCE-Lab
+   git clone https://github.com/zoly-zoly/RCE-Lab.git && cd RCE-Lab
    ```
 2. Start the built-in PHP development server:
    ```bash
-   php -S localhost:8080 -t .
+   php -S localhost:8080 -t 
    ```
 3. Access the training dashboard in your browser at:
    ```text
