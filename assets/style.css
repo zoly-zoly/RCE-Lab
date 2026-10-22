@@ -1,0 +1,168 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --accent-low: #10b981;
+    --accent-medium: #f59e0b;
+    --accent-high: #ef4444;
+    --accent-critical: #8b5cf6;
+    --accent-elite: #f43f5e;
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --code-bg: #0f172a;
+    --border-color: #334155;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.box {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-top: 5px solid var(--accent-low);
+    margin-bottom: 30px;
+}
+
+.box.low { border-top-color: var(--accent-low); }
+.box.medium { border-top-color: var(--accent-medium); }
+.box.high { border-top-color: var(--accent-high); }
+.box.critical { border-top-color: var(--accent-critical); }
+.box.elite { border-top-color: var(--accent-elite); }
+
+h2 { color: var(--text-color); margin-top: 0; }
+
+code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #f43f5e;
+    font-family: 'Fira Code', monospace;
+}
+
+pre {
+    background: var(--code-bg);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    margin: 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:hover { background-color: #2563eb; transform: translateY(-1px); }
+.btn-secondary { background-color: #475569; }
+.btn-secondary:hover { background-color: #334155; }
+
+.form-group { margin-bottom: 20px; }
+label { display: block; margin-bottom: 8px; color: var(--text-muted); font-weight: 500; }
+input[type="text"], input[type="file"], textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    color: white;
+    font-size: 1rem;
+}
+
+.result-box {
+    background: #020617;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-low);
+    margin-top: 30px;
+    min-height: 50px;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.badge-low { background: rgba(16, 185, 129, 0.1); color: var(--accent-low); }
+.badge-medium { background: rgba(245, 158, 11, 0.1); color: var(--accent-medium); }
+.badge-high { background: rgba(239, 68, 68, 0.1); color: var(--accent-high); }
+.badge-critical { background: rgba(139, 92, 246, 0.1); color: var(--accent-critical); }
+.badge-elite { background: rgba(244, 63, 94, 0.1); color: var(--accent-elite); }
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.back-link:hover { color: white; }
+
+/* Dashboard Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border-top: 5px solid transparent;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.card:hover { transform: translateY(-5px); }
+.card.low { border-top-color: var(--accent-low); }
+.card.medium { border-top-color: var(--accent-medium); }
+.card.high { border-top-color: var(--accent-high); }
+.card.critical { border-top-color: var(--accent-critical); }
+.card.elite { border-top-color: var(--accent-elite); }
+
+.card h3 { margin-top: 0; }
+.card p { color: var(--text-muted); font-size: 0.9rem; flex-grow: 1; }
