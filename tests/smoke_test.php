@@ -22,7 +22,8 @@ $files = [
     'includes/footer.php',
     'includes/session_helper.php',
     'WIKI.md',
-    'README.md'
+    'README.md',
+    'wiki/RCE_Deep_Dive.md'
 ];
 
 $passed = 0;
